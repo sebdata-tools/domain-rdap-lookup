@@ -1,0 +1,15 @@
+{
+    "actorSpecification": 1,
+    "name": "domain-rdap-lookup",
+    "title": "WHOIS Domain Lookup via RDAP: Created, Expiry, Registrar, DNS",
+    "description": "Bulk WHOIS-style domain lookup through the registries' official RDAP servers (the successor of WHOIS): registered or not, creation and expiry dates, days until expiry, registrar, status codes, nameservers and DNSSEC. Clean JSON, no contact data.",
+    "version": "0.1",
+    "buildTag": "latest","defaultMemoryMbytes": 256,"minMemoryMbytes": 256,
+    "maxMemoryMbytes": 512,
+    "dockerfile": "../Dockerfile",
+    "input": "./input_schema.json",
+    "output": "./output_schema.json",
+    "storages": {
+        "dataset": "./dataset_schema.json"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "title": "Domain RDAP Lookup input",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "domains": {
+            "title": "Domains",
+            "type": "array",
+            "description": "One per line, up to 1,000 per run. Domain names (example.com) or URLs (https://www.example.com/page): the domain is taken from the URL. For a subdomain (shop.example.com) the registered domain above it is looked up.",
+            "editor": "stringList",
+            "prefill": ["example.com", "wikipedia.org", "https://www.github.com/apify"]
+        },
+        "includeUnsupported": {
+            "title": "List domains on unsupported TLDs",
+            "type": "boolean",
+            "description": "Some country registries (for example .de, .io, .ch) have no RDAP service, and .uk is not supported. When on, those domains appear in the output with status \"unsupported_tld\" and are not charged. When off, they are left out.",
+            "default": true
+        },
+        "proxyConfiguration": {
+            "title": "Proxy",
+            "type": "object",
+            "description": "Optional. The Actor normally works without a proxy.",
+            "editor": "proxy",
+            "sectionCaption": "Advanced"
+        }
+    },
+    "required": ["domains"]
+}

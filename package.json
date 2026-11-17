@@ -1,0 +1,24 @@
+{
+  "name": "domain-rdap-lookup",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Bulk domain registration lookup over official RDAP: registered or not, created and expiry dates, registrar, status, nameservers (Apify Actor).",
+  "main": "src/main.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "node test/run_tests.mjs"
+  },
+  "dependencies": {
+    "apify": "^3.7.2",
+    "undici": "^8.12.4"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sebdata-tools/domain-rdap-lookup.git"
+  }
+}

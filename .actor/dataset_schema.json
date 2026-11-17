@@ -1,0 +1,49 @@
+{
+    "actorSpecification": 1,
+    "fields": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+            "input": { "type": "string", "description": "The entry as you gave it." },
+            "domain": { "type": "string", "description": "The domain the answer is about (lowercase ASCII). For a subdomain, the registered domain above it." },
+            "tld": { "type": "string" },
+            "status": { "type": "string", "description": "registered, not_found, unsupported_tld or error." },
+            "registered": { "type": ["boolean", "null"], "description": "true, false, or null when the registry gave no answer." },
+            "unicodeName": { "type": ["string", "null"], "description": "The readable form of an internationalized domain." },
+            "createdAt": { "type": ["string", "null"], "description": "Registration date, ISO 8601 UTC." },
+            "updatedAt": { "type": ["string", "null"], "description": "Last change of the registration." },
+            "expiresAt": { "type": ["string", "null"], "description": "Expiry date; some registries do not publish it." },
+            "daysUntilExpiry": { "type": ["integer", "null"] },
+            "registrar": { "type": ["string", "null"], "description": "The registrar company's name." },
+            "registrarIanaId": { "type": ["integer", "null"] },
+            "statuses": { "type": "array", "items": { "type": "string" }, "description": "Status codes such as \"client transfer prohibited\"." },
+            "nameservers": { "type": "array", "items": { "type": "string" } },
+            "dnssec": { "type": ["boolean", "null"], "description": "Whether the delegation is signed." },
+            "rdapServer": { "type": ["string", "null"], "description": "The registry server that answered." },
+            "message": { "type": "string", "description": "Present for unsupported_tld and error." },
+            "checkedAt": { "type": "string", "description": "When the lookup was made, ISO 8601 UTC." }
+        },
+        "required": ["input", "domain", "status", "registered"]
+    },
+    "views": {
+        "overview": {
+            "title": "Domains",
+            "transformation": {
+                "fields": ["domain", "status", "createdAt", "expiresAt", "daysUntilExpiry", "registrar", "nameservers", "input"]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "domain": { "label": "Domain", "format": "text" },
+                    "status": { "label": "Status", "format": "text" },
+                    "createdAt": { "label": "Created", "format": "date" },
+                    "expiresAt": { "label": "Expires", "format": "date" },
+                    "daysUntilExpiry": { "label": "Days left", "format": "number" },
+                    "registrar": { "label": "Registrar", "format": "text" },
+                    "nameservers": { "label": "Nameservers", "format": "array" },
+                    "input": { "label": "Input", "format": "text" }
+                }
+            }
+        }
+    }
+}
